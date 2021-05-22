@@ -1,0 +1,31 @@
+
+  19/05/2020
+
+
+1) Two-tier architecture:  user directly communicate the database without helping central server.
+
+2)Backup - Once the data was lost in persisitent storage, we need to restore information from external devices like cloud drive,flash drive and physical drive(usb) (Eg; Google drive,Google photos)
+
+3)syn - syncronization always maintain the consistency on both location. (eg: Gmail,aadhar card portal)
+
+4) java jdk 1.8
+
+5) eclipse installation
+
+
+
+20/05/2020
+
+1)   class &objects real example and difference
+
+2) attach source file to eclipse
+
+3) stack and heap memory allocation on datatypes
+
+4) Java api documentation
+
+5)java coding convention
+
+6)Playing game program
+
+7)autoboxing &unboxing with example 
