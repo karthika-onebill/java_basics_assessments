@@ -84,13 +84,6 @@ class Debit {
 
 }
 
-class History {
-
-}
-
-class Balance {
-
-}
 
 public class Banking_Assignments {
 
@@ -99,7 +92,7 @@ public class Banking_Assignments {
 		long amount = 1000; // initial amount 1000 (for opening account)
 		int choice; // choices
 		int exit = 1;
-		String[] operation_choose = { "credit", "debit" };
+		
 		// for mataining the Transcation History
 		/*
 		 * sl.no | operation | Old_amount | transcation amount | new_amount |
@@ -195,6 +188,7 @@ public class Banking_Assignments {
 			case 5:
 				// exit
 				exit = 0;
+				System.out.println("Thank you!");
 				break;
 			default:
 
