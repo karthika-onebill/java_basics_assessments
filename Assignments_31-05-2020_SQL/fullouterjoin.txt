@@ -1,0 +1,37 @@
+mysql> show tables;
+    -> //
++-------------------+
+| Tables_in_onebill |
++-------------------+
+| customer          |
+| department        |
+| employee          |
+| item              |
+| office            |
+| orders            |
+| person_data       |
+| sales             |
++-------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from employee;
+    -> //
++-------+--------+------------------+------------+------------+------------+--------+------+------+--------------------+
+| empid | name   | email            | mobile     | dob        | doj        | gender | exp  | dept | designation        |
++-------+--------+------------------+------------+------------+------------+--------+------+------+--------------------+
+|     1 | Rahul  | r@gmail.com      | 234234234  | 1980-12-30 | 2015-11-09 | m      |    6 | A    | software engineer  |
+|     2 | Rohit  | rohit@gmail.com  | 784234234  | 1983-10-30 | 2014-11-09 | m      |    7 | B    | data engineer      |
+|     3 | Rajath | rajath@gmail.com | 9898678787 | 1993-01-21 | 2020-05-23 | m      |    8 | D    |  Tester            |
+|     4 | Rani   | rani@gmail.com   | 9865432134 | 1993-01-21 | 2020-05-23 | f      |    0 | B    |  Tester            |
+|     5 | Reshma | reshma@gmail.com | 9865432134 | 1999-03-20 | 2020-05-23 | f      |    4 | A    |  Software engineer |
++-------+--------+------------------+------------+------------+------------+--------+------+------+--------------------+
+5 rows in set (0.09 sec)
+
+mysql> select * from dept;
+    -> //
+ERROR 1146 (42S02): Table 'onebill.dept' doesn't exist
+mysql> select * from department;
+    -> //
+Empty set (0.01 sec)
+
+mysql> tee /home/karthika/onebill_java_training/java_basics/Assignments_31-05-2020_SQL/fullouterjoinSample.txt

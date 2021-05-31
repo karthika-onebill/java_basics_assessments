@@ -1,0 +1,85 @@
+mysql> show tables;
+    -> //
++-------------------+
+| Tables_in_onebill |
++-------------------+
+| customer          |
+| department        |
+| employee          |
+| item              |
+| office            |
+| orders            |
+| person_data       |
+| sales             |
++-------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from sales;
+    -> //
++-----+--------+---------+-------+-------+
+| sid | itemid | qtysold | price | total |
++-----+--------+---------+-------+-------+
+| 101 |      2 |      10 |     0 |     0 |
++-----+--------+---------+-------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into sales values(102,3,100,23,0);
+    -> //
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`onebill`.`sales`, CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`itemid`) REFERENCES `item` (`itemid`))
+mysql> select * from item;
+    -> //
++--------+----------+------+-------+-----------+
+| itemid | itemdesc | qoh  | price | category  |
++--------+----------+------+-------+-----------+
+|      1 | Perfume  |  100 |   100 | Cosmetics |
+|      2 | Marie    |  100 |    10 | Snacks    |
++--------+----------+------+-------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> insert into sales values(102,2,100,23,0);
+    -> //
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into sales values(103,2,200,23,0);
+    -> //
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from sales;
+    -> //
++-----+--------+---------+-------+-------+
+| sid | itemid | qtysold | price | total |
++-----+--------+---------+-------+-------+
+| 101 |      2 |      10 |     0 |     0 |
+| 102 |      2 |     100 |    23 |  2300 |
+| 103 |      2 |     200 |    23 |  4600 |
++-----+--------+---------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> delimiter //
+mysql> create trigger reduceQT
+    -> on sales
+    -> after insert
+    -> as
+    -> begin
+    -> new.qtysold = new.qtysold-2
+    -> end//
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on sales
+after insert
+as
+begin
+new.qtysold = new.qtysold-2
+end' at line 2
+mysql> delimiter //
+mysql> create trigger reduceQuantity
+    -> before insert
+    -> for each row
+    -> begin
+    -> new.qtysold = new.qtysold-2
+    -> ;
+    -> end //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'for each row
+begin
+new.qtysold = new.qtysold-2
+;
+end' at line 3
+mysql> tee /home/karthika/onebill_java_training/java_basics/Assignments_31-05-2020_SQL/fullouterjoin.txt
